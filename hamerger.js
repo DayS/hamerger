@@ -32,6 +32,9 @@ function mergeFiles(configPath, options) {
 
     var globalConfig = files
       .filter(function (file) {
+        if (options.verbose) {
+          console.log("Found " + file);
+        }
         return file.match(fileFilterRegexp);
       })
       .sort()
