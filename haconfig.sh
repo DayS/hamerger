@@ -22,6 +22,7 @@
 
 
 CURRENTCFG=/etc/haproxy/haproxy.cfg
+BACKUPCFG=/etc/haproxy/haproxy.cfg.bck
 NEWCFG=/tmp/haproxy.cfg.tmp
 CONFIGDIR=/etc/haproxy/conf.d
 
@@ -42,6 +43,11 @@ if [ $? -eq 0 ]; then
     read -p "Should I copy new configuration to $CURRENTCFG and reload haproxy? [y/N]" -n 1 -r
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
+        if ! hash etckeeper 2>/dev/null; then
+            echo "Backup current config version in $BACKUPCFG..."
+            cat $CURRENTCFG > $BACKUPCFG
+        fi
+
         echo " "
         echo "Working..."
         cat $NEWCFG > $CURRENTCFG
