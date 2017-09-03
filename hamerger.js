@@ -32,9 +32,6 @@ function mergeFiles(configPath, options) {
 
     var globalConfig = files
       .filter(function (file) {
-        if (options.verbose) {
-          console.log("Found " + file);
-        }
         return file.match(fileFilterRegexp);
       })
       .sort()
@@ -78,7 +75,7 @@ function mergeFiles(configPath, options) {
         }
 
         if (options.verbose) {
-          console.log('Merged file writtent in ' + options.output);
+          console.log('Merged file written in ' + options.output);
         }
       });
     }
