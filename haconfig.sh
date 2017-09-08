@@ -32,7 +32,7 @@ echo "Compiling *.cfg files from $CONFIGDIR"
 $DIR/hamerger.js $CONFIGDIR --verbose --output $NEWCFG
 
 echo "Differences between current and new config"
-colordiff -s -U 3 $CURRENTCFG $NEWCFG
+diff  -s -U 3 $CURRENTCFG $NEWCFG | colordiff
 if [ $? -ne 0 ]; then
     echo "You should make some changes first :)"
     exit 1 #Exit if old and new configuration are the same
