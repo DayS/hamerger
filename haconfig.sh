@@ -26,8 +26,10 @@ BACKUPCFG=/etc/haproxy/haproxy.cfg.bck
 NEWCFG=/tmp/haproxy.cfg.tmp
 CONFIGDIR=/etc/haproxy/conf.d
 
+DIR=`dirname $0`
+
 echo "Compiling *.cfg files from $CONFIGDIR"
-hamerger.js $CONFIGDIR --verbose --output $NEWCFG
+$DIR/hamerger.js $CONFIGDIR --verbose --output $NEWCFG
 
 echo "Differences between current and new config"
 colordiff -s -U 3 $CURRENTCFG $NEWCFG
