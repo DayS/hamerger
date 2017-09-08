@@ -28,7 +28,7 @@ function mergeFiles(configPath, options) {
     }
 
     var fileFilterRegexp = new RegExp(options.filter);
-    var configEntryRegexp = /^\s+#?/i;
+    var configEntryRegexp = /^(\s|#)+/i;
 
     var globalConfig = files
       .filter(function (file) {
